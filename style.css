@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+
+
+/* styles for bzrefs */
+
+div.dokuwiki a.bzref {
+	background-image: url(images/bug1.gif);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding: 0 0 0 18px;
+}
+div.dokuwiki a.bzref.bz-error {
+	background-color: red; background-color: rgba(200, 54, 54, 0.3); 
+	border: 1px solid red; border-radius: 4px;
+	padding: 1px 3px 1px 21px;
+	background-position: 2px center;
+}
+div.dokuwiki a.bzref.bz-resolved {
+	text-decoration: line-through;
+}
+
+
+
+/* styles for bzextras */
+
+div.dokuwiki .bzextra { margin-left: 6px; color:gray; }
+div.dokuwiki .bzextra > * {
+	color: white;
+	background-color: #777; 
+	border-radius: 3px;
+	padding: 2px 3px 2px 3px;
+}
+div.dokuwiki .bzextra > * + *  {
+    margin-left:3px;
+}
+div.dokuwiki .bzextra > *.bz-label-gray {
+	font-weight:normal;
+	background-color: #777; 
+}
+div.dokuwiki .bzextra > *.bz-label-red {
+	font-weight:bold;
+	background-color: #d9534f; 
+}
+div.dokuwiki .bzextra > *.bz-label-orange {
+	font-weight:bold;
+	background-color: #F0AD4E; 
+}
+div.dokuwiki .bzextra > *.bz-label-green {
+	font-weight:normal;
+	background-color: #5CB85C; 
+}
+div.dokuwiki .bzextra > *.bz-label-lightblue {
+	font-weight:bold;
+	background-color: #5BC0DE; 
+}
+div.dokuwiki .bzextra > *.bz-label-darkblue {
+	font-weight:bold;
+	background-color: #337AB7; 
+}
+
+
+/* styles for links */
+
+div.dokuwiki .bugzillalink {}
+
+
+/* styles for lists */
+div.dokuwiki .bugzillalist li.empty-msg {
+	display: none;
+}
+div.dokuwiki .bugzillalist.empty li.empty-msg {
+	display: list-item;
+}
+
+div.dokuwiki .bugzillalist li.placeholder {
+	display: none;
+	background-image: url(images/ajax-loader.gif);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding: 0 0 0 20px;
+}
+div.dokuwiki .bugzillalist.loading li.placeholder {
+	display: list-item;
+}
+div.dokuwiki .bugzillalist li.group-headline {
+	list-style-type: none; padding-top:5px; padding-bottom:2px;
+}
+div.dokuwiki .bugzillalist li.group-headline-first {
+	margin-top: -1px;
+	padding-top:0px;
+}
+
+
+/* styles for trees */
+
+div.dokuwiki .bugzillatree .heading {
+	margin-bottom: 5px;
+}
+
+div.dokuwiki .bugzillatree .heading span.blocked-by-msg {
+	color: gray;
+}
+
+div.dokuwiki .bugzillatree li.empty-msg {
+	display: none;
+}
+div.dokuwiki .bugzillatree.empty li.empty-msg {
+	display: list-item;
+}
+
+div.dokuwiki .bugzillatree li.placeholder {
+	display: none;
+	background-image: url(images/ajax-loader.gif);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding: 0 0 0 20px;
+}
+div.dokuwiki .bugzillatree.loading li.placeholder {
+	display: list-item;
+}
