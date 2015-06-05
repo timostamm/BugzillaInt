@@ -1,0 +1,159 @@
+====== BugzillaInt Plugin ======
+
+---- plugin ----
+description: Provides customizable Buglinks, Buglists and Bugtrees from Bugzilla via RPC.
+author     : Timo Stamm
+email      : ts@timostamm.de
+type       : syntax
+lastupdate : 2015-06-03
+compatible : "Hrun", 2014-09-29d
+depends    : 
+conflicts  : 
+similar    : 
+tags       : bugzilla
+
+downloadurl: https://github.com/timostamm/BugzillaInt/archive/master.zip
+bugtracker : https://github.com/timostamm/BugzillaInt/issues
+sourcerepo : https://github.com/timostamm/BugzillaInt
+donationurl: http://donatenow.wc.lt/?donate=ts@timostamm.de&item-name=BugzillaInt&amount=5&method=PayPal
+----
+
+===== Description =====
+
+Create complex Buglists, Bugtrees or inline-Links to Bugzilla-Bugs 
+with simple intuitive syntax. 
+
+Customizable visual alerts direct your attention to oncoming deadlines or high 
+priority Bugs.
+
+
+===== Examples/Usage =====
+
+=== Bug 1234 ===
+{{http://pub.devserver2.de/bugzillaint/link.png|Screenshot Bug Link}}
+
+=== <Buglist> ===
+{{http://pub.devserver2.de/bugzillaint/list.png|Screenshot Bug List}}
+
+=== <Bugtree> ===
+{{http://pub.devserver2.de/bugzillaint/tree.png|Screenshot Bug Tree}}
+
+
+
+===== Installation =====
+
+You must provide your Bugzilla Endpoint and Credentials in the configuration 
+in order to use this plugin. This plugin is tested with Bugzilla version 4.4.7. Available languages: english, german.
+
+Install the plugin using the [[plugin:plugin|Plugin Manager]] and the download 
+URL above, which points to latest version of the plugin. Refer to [[:Plugins]] 
+on how to install plugins manually. The local plugin directory must have the 
+same name as the plugin is named, otherwise the plugin won't work properly.
+
+
+
+===== Syntax =====
+
+=== Bug Links ===
+
+<code>
+  Bug 123 <status,assigned_to>
+</code>
+
+You can use this syntax for Bug links anywhere. For example, create your own 
+ad-hoc TODO-lists:
+
+<code>
+   * Bug 123
+   * Bug 124 <status,assigned_to>
+   * Bug 125 <priority,status,assigned_to>
+</code>
+
+The part wrapped in ''<'' ''>'' is optional. You can define extra fields to show. See below for more information about extra fields.
+
+
+=== Bug Trees ===
+
+<code>
+  <Bugtree 123 depth:3 showResolved extras:priority,assigned_to>
+</code>
+
+The bugtree is similar to Bugzillas Dependency Tree Page. It shows a hierarchy of Bugs blocking the given Bug. By default, only unresolved Bugs are displayed, which can be extended using the optional flag ''showResolved''. The ''depth'' option limits the depth of the hierarchy. Use the option ''extras'' to show extra fields.
+
+
+=== Bug Lists ===
+
+<code>
+  <Buglist OPEN summary:Foo group_by:status extras:assigned_to,priority>
+</code>
+
+The query format for buglists uses the bugzilla quicksearch syntax. You can query for various fields (also using multiple, comma-separated values). In addition to the quicksearch query, you can group the results by a field using ''group_by''. Use the option ''extras'' to show extra fields.
+
+Quicksearch is not available in Bugzillas XML-RPC-API as of version 4.x. Therefore, only a subset of the syntax is implemented until Bugzilla v5 is released and widely deployed.
+
+
+
+=== Extra fields ===
+
+Bugs can be shown with extra fields. For example, you can show the assignee (''assigned_to'')
+next to a Bug, or the ''priority'', and many others. 
+
+Extra fields are available on individual Bug Links, Bug Lists as well as Bug
+Trees. If you specify the extra fields, you overwrite the default value as 
+defined in the plugin settings. Please not that the fields ''priority'', ''severity'' and ''deadline'' are automatically 
+added if they cross a certain threshold, which is customizable in the plugin 
+settings.
+
+The complete list of available extra fields: 
+
+	* ''dependencies'' - shows the count of open bugs depending on or blocking this bug - links to bugzilla dependency tree
+	* ''assigned_to'' - shows assigne login name, links to a list of all bugs assigned to the person
+	* ''lastchange'' - actually is not functional in my bugzilla installation
+	* ''deadline'' - show deadline if present and uses a warning color from the plugin settings - shows automatically if the deadline apporaches the threshold set in plugin settings.
+	* ''status'' - shows the Bug status, using colors as set in plugin settings 
+	* ''version'' - shows the version
+	* ''priority'' - show Bug priority, using colors from the plugin settings - shows automatically if above threshold set in plugin settings
+	* ''severity'' - show severity, using colors from the plugin settings - shows automatically if above threshold set in plugin settings
+	* ''time'' - actually is not functional in my bugzilla installation
+	* ''classification'' - shows the classification the Bug belongs to - links to a list of all open bugs in this classification
+	* ''product'' - shows the product the Bug belongs to - links to the bugzilla product description page
+	* ''component'' - shows the component the Bug belongs to - links to a list of all open bugs in this component
+
+
+
+===== Configuration and Settings =====
+
+In order to use this plugin, you must provide your bugzilla endpoint 
+and your bugzilla credentials. 
+
+All other settings are optional. You can configure: 
+  * the default extras, 
+  * warning thresholds for priority, severity and deadline
+  * colors for each bug status
+  * default tree depth
+
+
+=== Change Log ===
+{{rss>http://github.com/timostamm/BugzillaInt/commits/master.atom date}}
+
+
+=== Report Bugs and Issues ===
+Please use GitHub: https://github.com/timostamm/BugzillaInt/issues
+
+
+=== Known issues and roadmap ===
+  * Buglist query syntax should be completely switched to Bugzilla quicksearch syntax once Bugzilla version 5 is released and widely deployed
+  * Authentication via Bugzilla would be nice, so that Users only see Bugs they have access to.
+
+
+===== FAQ =====
+
+=== Who are you? ===
+Timo Stamm
+
+=== Do you accept donations? ===
+Yes.
+
+=== Are you a full-stack web developer who can develop a solution for our business problem? ===
+Yes.
+
