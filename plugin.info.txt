@@ -1,0 +1,7 @@
+base	bugzillaint
+author	Timo Stamm
+email	ts@timostamm.de
+date	2015-06-03
+name	Bugzilla-Integration
+desc	Provides Buglinks, Buglists and Bugtrees from Bugzilla
+url		https://github.com/timostamm/BugzillaInt
