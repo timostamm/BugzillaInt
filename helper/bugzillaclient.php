@@ -142,8 +142,10 @@ class helper_plugin_bugzillaint_bugzillaclient extends DokuWiki_Plugin {
 		if ( preg_match('/creator:([A-Za-z0-9_,@.]+)/', $query, $m) ) {
 			$options['creator'] = explode(',', $m[1]);
 		}
-	
-	
+		if ( preg_match('/version:([A-Za-z0-9_\-\.]+)/', $query, $m) ) {
+			$options['version'] = explode(',', $m[1]);
+		}
+
 		// fix status
 		$options['status'] = array_map(function($value) {
 			$v = trim($value);
