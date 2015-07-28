@@ -99,7 +99,7 @@ jQuery(function(){
 		}
 		
 		// bzextra
-		var extra = renderExtras( master, bug )
+		var extra = renderExtras( master, bug );
 		
 		return ( extra.children().length > 0 ) ? a.add( extra ) : a;
 	}
@@ -208,7 +208,7 @@ jQuery(function(){
 
 		if ( extra == 'dependencies' ) {
 			e = jQuery('<a></a>')
-				.attr('href', master.attr('bugzilla_baseurl') + '/showdependencytree.cgi?hide_resolved=0&id=' + bug.id)
+				.attr('href', master.attr('bugzilla_baseurl') + '/showdependencytree.cgi?hide_resolved=0&id=' + bug.id);
 			if (bug.depends_on_resolved && bug.depends_on_resolved.length < bug.depends_on.length) {
 				e.append(
 					master.attr('extra_depends_on').split('{0}').join(bug.depends_on.length - bug.depends_on_resolved.length)
@@ -310,7 +310,7 @@ jQuery(function(){
 		
 		if ( !bug.resolution && bug.deadline ) {
 			var red = master.attr('deadline_threshold_days_red');
-			var orange = master.attr('deadline_threshold_days_orange')
+			var orange = master.attr('deadline_threshold_days_orange');
 
 			var p = bug.deadline.split('-');
 			var deadlineTime = new Date(p[0], p[1]-1, p[2], 0, 0, 0, 0).getTime();
