@@ -49,7 +49,7 @@ class syntax_plugin_bugzillaint_list extends DokuWiki_Syntax_Plugin {
 	/**
 	 * Handle matches
 	 */
-	public function handle($match, $state, $pos, &$handler){
+	public function handle($match, $state, $pos, Doku_Handler $handler){
 		$matches = array();
 
 		// found list
@@ -74,7 +74,7 @@ class syntax_plugin_bugzillaint_list extends DokuWiki_Syntax_Plugin {
 	 * @param array $data
 	 * @return boolean
 	 */
-	public function render($mode, &$renderer, $data) {
+	public function render($mode, Doku_Renderer $renderer, $data) {
 		if ($mode != 'xhtml') return false;
 
 		// render list
